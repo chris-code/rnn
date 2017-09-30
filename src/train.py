@@ -11,6 +11,7 @@ import signal
 
 PG_PATH = "/home/chrisbot/Projects/Geany-Workspace/RNN/data/pg.txt"
 SENTENCE_LENGTH = 90
+PREDICT_LENGTH = 30
 
 
 def parse_args():
@@ -97,7 +98,7 @@ if __name__ == "__main__":
 	seed_idx = random.randint(0, len(data)-SENTENCE_LENGTH-1)
 	seed = data[seed_idx:seed_idx+SENTENCE_LENGTH]
 	pred = seed
-	for i in range(360):
+	for i in range(PREDICT_LENGTH):
 		pred += predict(model, pred[-SENTENCE_LENGTH:], len(alphabet), char_to_idx)
 
 	print("Seed:\t" + seed)
