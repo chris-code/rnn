@@ -18,6 +18,8 @@ def parse_args():
 	parser = argparse.ArgumentParser(description="Train recurrent network")
 	parser.add_argument("path", help="Text corpus")
 	parser.add_argument("-l", "--limit", type=int, help="Maximum number of bytes to load from dataset")
+	parser.add_argument("-e", "--epochs", type=int, default=1, help="Maximum number of bytes to load from dataset")
+	parser.add_argument("-b", "--batch-size", type=int, default=128, dest="batch_size", help="Maximum number of bytes to load from dataset")
 	return parser.parse_args()
 
 
@@ -93,7 +95,7 @@ if __name__ == "__main__":
 
 	model = build_model(SENTENCE_LENGTH, len(alphabet))
 	model.summary()
-	model.fit(X, y, batch_size=128, epochs=1)
+	model.fit(X, y, batch_size=args.batch_size, epochs=args.epochs)
 
 	seed_idx = random.randint(0, len(data)-SENTENCE_LENGTH-1)
 	seed = data[seed_idx:seed_idx+SENTENCE_LENGTH]
