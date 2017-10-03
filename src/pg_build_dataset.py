@@ -27,6 +27,7 @@ class PG_HTML_parser(html.parser.HTMLParser):
 		if tag == "p":
 			self.is_p = False
 
+
 def simplify_content(content):
 	content = " ".join(content.split())
 
@@ -37,6 +38,7 @@ def simplify_content(content):
 	content = content.lower()
 
 	return content
+
 
 if __name__ == "__main__":
 	signal.signal(signal.SIGPIPE, signal.SIG_DFL)
