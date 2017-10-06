@@ -25,7 +25,7 @@ def load_model(path):
 	return model, normalizer, X_names, y_names
 
 
-def print_results(X, X_names, y_true, y_names, y_pred):
+def print_predictions(X, X_names, y_true, y_names, y_pred):
 	y_pred_names = [yn+"_PRED" for yn in y_names]
 	header = X_names + y_names + y_pred_names
 	data = np.hstack([X, y_true, y_pred])
@@ -51,4 +51,4 @@ if __name__ == "__main__":
 	y_pred = model.predict(X)
 	X = np.squeeze(X)
 
-	print_results(X, X_names, y, y_names, y_pred)
+	print_predictions(X, X_names, y, y_names, y_pred)

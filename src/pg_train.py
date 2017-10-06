@@ -32,6 +32,7 @@ def load_data(path, num_targets, limit=None):
 	codepath = path.replace(".npy.gz", ".json")
 	with open(codepath, "r") as infile:
 		idx_to_char = json.load(infile)
+	idx_to_char = {int(k): v for k, v in idx_to_char.items()}
 
 	return X, y, idx_to_char
 

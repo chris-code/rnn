@@ -51,7 +51,6 @@ def split_train_test(data, test_fraction):
 	np.random.shuffle(train)
 
 	X_train, y_train, X_test, y_test = train[:,:-1], train[:,-1], test[:,:-1], test[:,-1]
-
 	return X_train, y_train, X_test, y_test
 
 
